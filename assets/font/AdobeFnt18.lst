@@ -1,0 +1,39 @@
+%!Adobe-FontList 1.18
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Montserrat-Bold
+FamilyName:Montserrat
+StyleName:Bold
+FullName:Montserrat-Bold
+MenuName:Montserrat
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Users\JARVIS\Desktop\Design and Projects\COVID-19\Font\Montserrat-Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:29560
+FileModTime:1400434610
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Montserrat-Bold
+NameArray:0,Win,1,Montserrat
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\JARVIS\Desktop\Design and Projects\COVID-19\Font\montserrat.zip
+FileModTime:1573253555
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\JARVIS\Desktop\Design and Projects\COVID-19\Font\roboto.zip
+FileModTime:1577627079
+%EndFont
+

@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'montserrat';
+    src: url(assets/font/Montserrat-Regular.ttf);
+}
+
+/* Kode Import Font */
+@font-face {
+    font-family: 'roboto';
+    src: url(assets/font/Roboto-Thin.ttf);
+}
+
+
+.header-info {
+    background: #093028;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, rgb(35, 122, 118), #093028);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, rgb(35, 122, 118), #093028);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    height: 250px;
+}
+
+.hero {
+    position: absolute;
+    float: left;
+    margin: -150px;
+}
+
+.hero-1 {
+    float: right;
+    margin-top: 70px;
+}
+
+.hero-2 {
+    float: right;
+    margin-top: 50px;
+    margin-right: -18px;
+}
+
+.hero-3 {
+    float: right;
+    margin-top: -100px;
+    margin-right: -18px;
+}
+
+.table-detail{
+    border: 1px solid grey;
+    
+}
+
+
+.title {
+    margin: 5px 0 0 15px;
+    font-family: 'montserrat', sans-serif;
+    color: aliceblue;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.card-info {
+    box-shadow: -2px 3px 15px 0px rgba(0, 0, 0, 0.11);
+    border-radius: 10px;
+    margin: 5px;
+    font-family: 'montserrat';
+}
+
+.sub {
+    margin: 5px 0 0 15px;
+    line-height: 30px;
+    font-family: 'roboto', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    color: aliceblue;
+}
+
+.section-2 {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background: white;
+    margin-top: -30px;
+    box-shadow: -2px -3px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+input {
+    
+    position: relative;
+    width: 70%;
+    height: 40px;
+    margin: 0 auto;
+    padding: 12px 15px;
+
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease-out;
+}
+
+
+.kasus-row-bg {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+.title-2 {
+    margin: 5px 0 0 15px;
+    font-family: "montserrat", sans-serif;
+    color: #2e2f3b;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.sub-data-kasus {
+    font-family: "montserrat", sans-serif;
+}
+
+.sub-2 {
+    margin: 5px 0 0 15px;
+    line-height: 30px;
+    font-family: "montserrat", sans-serif;
+    font-size: 12px;
+    line-height: 10px;
+    color: #606270;
+}
+
+.sub-link {
+    margin: 5px 0 0 15px;
+    line-height: 30px;
+    font-family: "montserrat", sans-serif;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.title-3 {
+    font-family: "montserrat", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.sub-3 {
+    margin-top: -20px;
+    font-family: "montserrat", sans-serif;
+    font-size: 13px;
+    color: #606270;
+}
+
+.title-4 {
+    text-align: left;
+    margin-left: 50px;
+    margin-top: -40px;
+    font-family: "montserrat", sans-serif;
+    color: #2e2f3b;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.sub-4 {
+    margin-left: 50px;
+    margin-top: -10px;
+    font-family: "montserrat", sans-serif;
+    font-size: 13px;
+    color: #606270;
+}
+
+.title-5 {
+    text-align: left;
+    margin-left: 62px;
+    font-family: "montserrat", sans-serif;
+    color: #2e2f3b;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.sub-5 {
+    margin-left: 70px;
+    margin-top: -20px;
+    font-family: "montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #626199;
+}
+
+.map {
+    border-radius: 10px;
+    background-color: black;
+    box-shadow: -2px -3px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+.bottom-nav {
+    background: #FFF;
+    -webkit-box-shadow: -2px -3px 15px 0px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: -2px -3px 15px 0px rgba(0, 0, 0, 0.11);
+    box-shadow: -2px -3px 15px 0px rgba(0, 0, 0, 0.11);
+}
+
+.menu {
+    font-family: montserrat;
+    font-size: 12px;
+    padding-bottom: 6px;
+}
+
+
+.button-bantuan {
+    box-shadow: -2px 3px 15px 0px rgba(0, 0, 0, 0.11);
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(73, 73, 73);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+
+
+.icon-info {
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.icon-bantuan {
+    padding-right: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.btn-panggil {
+    border-radius: 10px;
+    float: right;
+    margin-top: 5px;
+}

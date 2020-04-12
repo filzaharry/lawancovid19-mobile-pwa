@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/img/192.png">
+
+    <!-- materialize icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#3823a4">
+    <link rel="manifest" href="manifest.json">
+    <title>Lawan Covid-19</title>
+</head>
+
+<body>
+    <section class="container ">
+        <div class="row">
+            <div class="border-bottom pb-4 col section-2 ">
+                <div class="form-group">
+                    <br>
+                    <p class="title-2 pt-4">Data Kasus Corona</p>
+                    <p class="sub-2 ">Secara diberbagai Negara</p>
+                    <br>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Negara..." title="Type in a name" class="m-2">
+                    <table class="table table-hover mt-2 sub-2" id="myTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Lokasi</th>
+                                <th scope="col" class="text-warning text-right">Kasus</th>
+                                <th scope="col" class="text-success text-right">Sembuh</th>
+                                <th scope="col" class="text-danger text-right">Meninggal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Global</th>
+                                <td id="kasus-global" class="text-warning text-right"></td>
+                                <td id="sembuh-global" class="text-success text-right"></td>
+                                <td id="meninggal-global" class="text-danger text-right"></td>
+                            <tr>
+                                <td scope="row">Amerika Serikat</td>
+                                <td id="usa-kasus" class="text-warning text-right"></td>
+                                <td id="usa-sembuh" class="text-success text-right"></td>
+                                <td id="usa-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td scope="row">Spanyol</th>
+                                <td id="spain-kasus" class="text-warning text-right"></td>
+                                <td id="spain-sembuh" class="text-success text-right"></td>
+                                <td id="spain-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Italia</th>
+                                <td id="italy-kasus" class="text-warning text-right"></td>
+                                <td id="italy-sembuh" class="text-success text-right"></td>
+                                <td id="italy-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Jerman</th>
+                                <td id="germany-kasus" class="text-warning text-right"></td>
+                                <td id="germany-sembuh" class="text-success text-right"></td>
+                                <td id="germany-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">China</th>
+                                <td id="china-kasus" class="text-warning text-right"></td>
+                                <td id="china-sembuh" class="text-success text-right"></td>
+                                <td id="china-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Korea Selatan</th>
+                                <td id="korsel-kasus" class="text-warning text-right"></td>
+                                <td id="korsel-sembuh" class="text-success text-right"></td>
+                                <td id="korsel-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Jepang</th>
+                                <td id="japan-kasus" class="text-warning text-right"></td>
+                                <td id="japan-sembuh" class="text-success text-right"></td>
+                                <td id="japan-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Malaysia</th>
+                                <td id="malay-kasus" class="text-warning text-right"></td>
+                                <td id="malay-sembuh" class="text-success text-right"></td>
+                                <td id="malay-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Indonesia</td>
+                                <td id="data-kasus" class="text-warning text-right"></td>
+                                <td id="data-sembuh" class="text-success text-right"></td>
+                                <td id="data-meninggal" class="text-danger text-right"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <section class="container bottom-nav fixed-bottom py-3">
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="row">
+                                    <div class="col-4 menu d-flex justify-content-center">
+                                        <a href="index.html" class="text-center" style="color: #259999;">
+                                            <img src="assets/icon-button/dashboard.svg" width="25px" class="pb-2">
+                                            <br>
+                                            Home
+                                        </a>
+                                    </div>
+                                    <div class="col-4 menu d-flex justify-content-center">
+                                        <a href="informasi.html" class="text-center" style=" color: #999999; ">
+                                            <img src="assets/icon-button/informasi_off.svg" width="20px" class="pb-2">
+                                            <br>
+                                            Informasi
+                                        </a>
+                                    </div>
+                                    <div class="col-4 menu d-flex justify-content-center">
+                                        <a href="bantuan.html" class="text-center" style="color: #999999;">
+                                            <img src="assets/icon-button/bantuan_off.svg" width="25px" class="pb-2">
+                                            <br>
+                                            Bantuan
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- Optional JavaScript -->
+                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    <script src="main.js"></script>
+                    <script src="listdetail.js"></script>
+                    <script src="controller.js"></script>
+
+
+</body>
+
+</html>

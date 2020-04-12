@@ -1,0 +1,348 @@
+
+<html>
+    <head>
+        <title>Lawan Covid-19</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Situs untuk mendiagnosa kemungkinan penyakit COVID-19 pada diri Anda.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#f8f9fa">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="assets/img/192.png">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-vue.css">
+<link rel="stylesheet" href="style.css">
+
+        <!-- development version, includes helpful console warnings -->
+        <script src="assets/js/vue.js"></script>
+        <script src="assets/js/polyfill.min.js"></script>
+        <script src="assets/js/bootstrap-vue.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/sweetalert.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <img src="assets/icon-hero/neural.svg" alt="molecul" width="500px" class="hero"
+            style="opacity: 0.3;filter: blur(2px);">
+        <img src="assets/icon-hero/neural.svg" alt="molecul" width="350px" class="hero" style="opacity: 1;">
+        <section class="container header-info">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="assets/icon-hero/doc.svg" alt="lawan COVID-19" class="hero-1" width="170px">
+                    <br><br>
+                    <p class="title mb-0">Dokter COVID-19</p>
+                    <p class="sub mb-0">coronavirus</p>
+    
+                </div>
+            </div>
+        </section>
+        <section class="container ">
+            <div class="row justify-content-center">
+                <div class="border-bottom pb-4 col-12 section-2 d-flex">
+            <div class="container animated fadeIn" style="margin-bottom: 100px" v-if="home">
+                <div class="row mt-3">
+                    <div class="col-12 col-lg-12">
+                        <div class="alert alert-info alert-dismissible animated-1s fadeInDown" role="alert" id="intro" v-if='submited'>
+                            Hai kami akan mendiagnosa secara dini apakah terdapat potensi COVID-19 pada diri Anda berdasarkan gejala yang ditimbulkan dengan metode <i>Certainty Factor (CF)</i>. <b>Segera input nama Anda dan klik tombol mulai!</b><!--  <i class="fas fa-heart" style="color: salmon"></i> -->
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2 mb-3">
+                    <div class="col-12 col-lg-4">
+                        <h3>Halo {{ name }}!</h3>
+                    </div>                
+                </div>
+
+                <div class="row my-3" v-if='submited'>
+                    <div class="col-12 col-lg-4 col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" v-model="name" placeholder="Input your name!">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" v-on:click="inputName" type="submit">Mulai</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       
+                        <div class="row my-3 animamted fadeInUp" v-if='mulai'>
+                            <div class="col-12 col-lg-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Symptoms
+                                    </div>
+        
+                                    <div class="card-body" v-if='visible[0]'>
+                                        <h5 class="card-title animated fadeIn text-left">Apakah Anda Kesulitan bernafas yang cukup parah (Bernafas dengan sangat cepat atau berbicara dalam satu kata) ?</h5>
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(0, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[1]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda mengalami nafas yang pendek saat istirahat ?</h5>
+                                        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(1, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[2]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda mengalami ketidakmampuan untuk berbaring karena kesulitan bernafas ?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(2, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[3]'>
+                                        <h5 class="card-title animated bounceIn">Apakah anda mengalami Nyeri Dada yang parah ?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(3, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[4]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda mengalami kesulitan untuk bangun Merasa kebingungan Penurunan kesadaran ?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(4, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[5]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda Demam, Batuk, Bersin dan Sakit Tenggorokan sampai Sulit Bernafas ?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(5, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[6]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda memberikan perawatan atau melakukan kontak dekat dengan seseorang dengan COVID-19 (kemungkinan atau dikonfirmasi) saat mereka sakit (batuk, demam, bersin, atau sakit tenggorokan)?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(6, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card-body text-left" v-if='visible[7]'>
+                                        <h5 class="card-title animated bounceIn">Apakah Anda memiliki kontak dekat dengan seseorang yang berpergian ke luar Negeri dalam 14 hari terakhir yang menjadi sakit (batuk, demam, bersin, atau sakit tenggorokan)?</h5>
+        
+                                        <div class="row animated shake">
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 1)' class="btn btn-outline-primary btn-block my-1">Sangat Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 0.8)' class="btn btn-outline-primary btn-block my-1">Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 0.6)' class="btn btn-outline-primary btn-block my-1">Cukup Yakin</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 0.4)' class="btn btn-outline-primary my-1 btn-block">Sedikit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 0.2)' class="btn btn-outline-primary my-1 btn-block">Tidak Tahu</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button v-on:click='inputWeight(7, 0)' class="btn btn-outline-primary my-1 btn-block">Tidak</button>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row end -->
+        
+                        <div class="row mt-2" v-if='selesai'>
+                            <div class="col-12">
+                                <div class="alert alert-success animated bounceIn" role="alert">
+                                    <h4 class="alert-heading">Berikut diagnosa Anda:</h4>
+                                    <p v-if='cfCombine <= 99'>Dari gejala-gejala yang Anda rasakan, sistem mendiagnosa Anda memiliki <b>{{ diagnostic }}</b> terinfeksi virus COVID-19 dengan persentase <b>{{ cfCombine }}%</b>.</p>
+                                    <p v-if='cfCombine > 99'>Dari gejala-gejala yang Anda rasakan, sistem <b>{{ diagnostic }}</b> bahwa Anda terinfeksi virus COVID-19 dengan persentase <b>{{ cfCombine }}%</b>.</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="alert alert-info text-justify animated bounceIn delay-1s" role="alert" v-if="cfCombine < 20">
+                                    <p>Pertahankan kesehatan Anda, makanlah makanan sehat dan bergizi, rajinlah berolahraga, dan jangan lupa bahagia :)</p>
+                                </div>
+                                <div class="alert alert-warning text-justify animated bounceIn delay-1s" role="alert" v-if='cfCombine >= 20 && cfCombine <= 99'>
+                                    <p>Perlu diperhatikan Anda harus konsultasi kepada dokter Anda untuk pemeriksaan lebih lanjut.</p>
+                                </div>
+                                <div class="alert alert-danger text-justify animated bounceIn delay-1s" role="alert" v-if='cfCombine > 99'>
+                                    <p>Segeralah periksakan kesehatan Anda ke dokter agar Anda mendapatkan penanganan medis secepat mungkin.</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary animated bounceIn delay-2s" v-on:click='init'>Ulangi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                    <!-- Container (APP) end -->
+        </div>
+        <section class="container bottom-nav fixed-bottom py-3">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-4 menu d-flex justify-content-center">
+                            <a href="index.html" class="text-center" style="color: #999999;">
+                                    <img src="assets/icon-button/dashboard_off.svg" width="25px" class="pb-2">
+                                <br>
+                                Home
+                            </a>
+                        </div>
+                        <div class="col-4 menu d-flex justify-content-center">
+                            <a href="informasi.html" class="text-center" style=" color: #999999; ">
+                                <img src="assets/icon-button/informasi_off.svg" width="20px" class="pb-2">
+                                <br>
+                                Informasi
+                            </a>
+                        </div>
+                        <div class="col-4 menu d-flex justify-content-center">
+                            <a href="bantuan.html" class="text-center" style="color: #259999;">
+                                    <img src="assets/icon-button/bantuan.svg" width="25px" class="pb-2">
+                                <br>
+                                Bantuan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+</html>
